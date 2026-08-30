@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)file:///C:/Users/sharo/Downloads/ai%20(7).html -->
+<html lang="he" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערך שירות לקוחות מבוסס AI - UrbanKitchen</title>
+    <!-- Google Fonts for Hebrew Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./מערך שירות לקוחות מבוסס AI - UrbanKitchen_files/css2" rel="stylesheet">
+    <!-- FontAwesome for professional business icons -->
+    <link rel="stylesheet" href="./מערך שירות לקוחות מבוסס AI - UrbanKitchen_files/all.min.css">
+    
+    <style>
+        /* 1. SETUP & BASE STYLE DEFINITIONS */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #cbd5e1;
+            font-family: 'Heebo', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        /* The Presentation Slide Container - Absolute Dimensions to mimic real PowerPoint slides */
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #ffffff;
+            color: #1e293b;
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-radius: 12px;
+            direction: rtl;
+        }
+
+        /* Premium Consulting Aesthetic Background accents */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.05) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .slide-container::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            left: 60px;
+            font-size: 12px;
+            color: #94a3b8;
+            font-weight: 400;
+            z-index: 1;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        /* Set page numbers on slide bottom corner */
+        #slide1::after { content: 'UrbanKitchen | AI Implementation & Strategy'; }
+        #slide2::after { content: 'UrbanKitchen | תקציר מנהלים | 1'; }
+        #slide_intro::after { content: 'UrbanKitchen | היכרות קצרה | 2'; }
+        #slide3::after { content: 'UrbanKitchen | אבחון מצב קיים | 3'; }
+        #slide4::after { content: 'UrbanKitchen | ניתוח הבעיה העסקית | 4'; }
+        #slide5::after { content: 'UrbanKitchen | ארכיטקטורת הפתרון | 5'; }
+        #slide6::after { content: 'UrbanKitchen | תרשים זרימת התהליך | 6'; }
+        #slide7::after { content: 'UrbanKitchen | מנגנון ניתוב ולוגיקת AI | 7'; }
+        #slide8::after { content: 'UrbanKitchen | מימוש ב-Make | 8'; }
+        #slide9::after { content: 'UrbanKitchen | ניהול חריגות ו-HITL | 9'; }
+        #slide10::after { content: 'UrbanKitchen | יציבות ואופטימיזציה | 10'; }
+        #slide11::after { content: 'UrbanKitchen | בדיקות קצה ותיקוף | 11'; }
+        #slide12::after { content: 'UrbanKitchen | יעדי KPI והחזר השקעה | 12'; }
+        #slide13::after { content: 'UrbanKitchen | תוכנית הטמעה ושינוי | 13'; }
+        #slide14::after { content: 'UrbanKitchen | מפת דרכים לעתיד | Roadmap | 14'; }
+        #slide15::after { content: 'UrbanKitchen | סיכום והמלצות אסטרטגיות | 15'; }
+
+        /* Dark Theme for Title & Section Separator Slides */
+        .slide-container.dark-theme {
+            background-color: #0f172a;
+            color: #ffffff;
+        }
+
+        .slide-container.dark-theme::before {
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
+        }
+
+        .slide-container.dark-theme h1,
+        .slide-container.dark-theme h2,
+        .slide-container.dark-theme h3 {
+            color: #ffffff;
+        }
+
+        .slide-container.dark-theme p,
+        .slide-container.dark-theme li {
+            color: #94a3b8;
+        }
+
+        /* 2. TYPOGRAPHY RULES */
+        h1, h2, h3, h4 {
+            font-family: 'Rubik', sans-serif;
+            font-weight: 700;
+        }
+
+        .slide-title {
+            font-size: 36px;
+            color: #0f172a;
+            margin-bottom: 25px;
+            width: 100%;
+            text-align: right;
+            border-bottom: 4px solid #0ea5e9;
+            padding-bottom: 12px;
+            font-weight: 700;
+            z-index: 2;
+            letter-spacing: -0.5px;
+        }
+
+        .slide-container.dark-theme .slide-title {
+            color: #ffffff;
+            border-bottom-color: #38bdf8;
+        }
+
+        /* Unified Paragraph and List text sizes */
+        p, li, th, td {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #475569;
+        }
+
+        .slide-container.dark-theme p, 
+        .slide-container.dark-theme li {
+            color: #cbd5e1;
+        }
+
+        /* 3. LAYOUT SPECIFICS */
+        .content-area {
+            width: 100%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            width: 100%;
+            align-items: center;
+        }
+
+        /* Grid Lists */
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-right: 25px;
+            margin-bottom: 12px;
+            text-align: right;
+            font-size: 17px;
+            color: #334155;
+        }
+
+        .slide-container.dark-theme .bullet-list li {
+            color: #cbd5e1;
+        }
+
+        .bullet-list li::before {
+            content: "■";
+            color: #0ea5e9;
+            position: absolute;
+            right: 0;
+            top: 2px;
+            font-size: 14px;
+        }
+
+        /* Solid Business Tables */
+        .table-layout {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .table-layout th {
+            background-color: #0f172a;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 12px 18px;
+            text-align: right;
+            border: 1px solid #334155;
+        }
+
+        .table-layout td {
+            padding: 12px 18px;
+            border: 1px solid #e2e8f0;
+            font-size: 15px;
+            background-color: #ffffff;
+            color: #334155;
+        }
+
+        .table-layout tr:nth-child(even) td {
+            background-color: #f8fafc;
+        }
+
+        /* Highlight Numbers Styling */
+        .metric-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-right: 5px solid #0ea5e9;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .metric-card .number {
+            font-size: 48px;
+            font-weight: 900;
+            color: #0f172a;
+            font-family: 'Rubik', sans-serif;
+            line-height: 1.1;
+            margin-bottom: 5px;
+        }
+
+        .metric-card .label {
+            font-size: 16px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* Tiles with Icons */
+        .tiled-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+
+        .tile {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .tile:hover {
+            transform: translateY(-4px);
+            border-color: #0ea5e9;
+        }
+
+        .tile .icon {
+            font-size: 36px;
+            color: #0ea5e9;
+            margin-bottom: 15px;
+        }
+
+        .tile h3 {
+            font-size: 18px;
+            color: #0f172a;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .tile p {
+            font-size: 13px;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        /* Image Display Support */
+        .image-wrapper {
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 100%;
+            height: 380px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            background: #ffffff;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Timeline Flow CSS */
+        .timeline-layout {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 45px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #e2e8f0;
+            z-index: 0;
+        }
+
+        .timeline-item {
+            width: 22%;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .timeline-item::before {
+            content: '';
+            width: 16px;
+            height: 16px;
+            background-color: #0ea5e9;
+            border-radius: 50%;
+            position: absolute;
+            top: -26px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 3px solid #ffffff;
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.2);
+        }
+
+        .timeline-item h3 {
+            font-size: 18px;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        /* Quote Layout */
+        .quote-layout {
+            background-color: #f8fafc;
+            border-right: 6px solid #0ea5e9;
+            padding: 40px;
+            border-radius: 8px;
+            width: 90%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .quote-layout blockquote {
+            font-size: 26px;
+            font-weight: 500;
+            color: #0f172a;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        .quote-layout cite {
+            font-size: 16px;
+            color: #64748b;
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        /* KPI Visual Bar Layout */
+        .bar-chart-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .bar-comparison-row {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .bar-comparison-row .bar-label {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+            text-align: right;
+        }
+
+        .bar-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background-color: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .bar-data-line {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .bar-data-line .state-tag {
+            width: 90px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #475569;
+        }
+
+        .bar-visual-container {
+            flex-grow: 1;
+            background-color: #e2e8f0;
+            height: 24px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-left: 10px;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        .bar-fill.current {
+            background-color: #ef4444; /* High/Bad state */
+        }
+
+        .bar-fill.target {
+            background-color: #10b981; /* Target/Good state */
+        }
+
+        /* Pure CSS diagram style */
+        .diagram-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .diagram-step {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 15px;
+            width: 18%;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        
+        .diagram-step h4 {
+            font-size: 14px;
+            color: #0ea5e9;
+            margin-bottom: 5px;
+        }
+        
+        .diagram-step p {
+            font-size: 12px;
+            color: #475569;
+            line-height: 1.4;
+        }
+        
+        .diagram-arrow {
+            color: #0ea5e9;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    
+    <!-- Robust Image Fallback & Interactive Flowchart Renderer Script -->
+    <script>
+        function handleImageError(img) {
+            // 1. Try relative path prefix (sometimes environments require exact dot reference)
+            if (!img.dataset.triedDot) {
+                img.dataset.triedDot = 'true';
+                img.src = './181523.png';
+                return;
+            }
+            // 2. Try cache buster query parameter to bypass browser caching issues
+            if (!img.dataset.triedBuster) {
+                img.dataset.triedBuster = 'true';
+                img.src = '181523.png?t=' + new Date().getTime();
+                return;
+            }
+            // 3. Fallback: If image cannot be loaded due to iframe sandbox security rules,
+            // render a stunning, high-fidelity responsive HTML flowchart.
+            const wrapper = img.closest('.image-wrapper');
+            if (wrapper) {
+                wrapper.innerHTML = `
+                    <div style="padding: 20px; background: #0f172a; height: 100%; display: flex; flex-direction: column; justify-content: space-between; border-radius: 8px; color: #fff; direction: ltr; font-family: 'Heebo', sans-serif;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #1e293b; padding-bottom:8px; margin-bottom:10px;">
+                            <span style="font-weight:700; color:#38bdf8; font-size:14px;">Make Scenario: UrbanKitchen - AI Customer Service Assistant</span>
+                            <span style="font-size:11px; background:#1e293b; padding:2px 8px; border-radius:12px; color:#94a3b8; direction:rtl;"><i class="fa-solid fa-network-wired"></i> תרשים זרימה דיגיטלי חלופי</span>
+                        </div>
+                        
+                        <div style="display:flex; flex-direction:column; gap:12px; flex-grow:1; justify-content:center;">
+                            <!-- Stage 1 to 3 Main Pipeline -->
+                            <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:10px;">
+                                <div style="background:#fef2f2; border:2px solid #ef4444; border-radius:8px; padding:8px 12px; width:150px; text-align:center; color:#ef4444; font-size:11px; font-weight:700; box-shadow:0 0 10px rgba(239,68,68,0.15);">
+                                    <i class="fa-solid fa-envelope-open" style="font-size:14px; margin-bottom:4px; display:block;"></i>
+                                    Receive Email<br><span style="font-size:9px; font-weight:400; color:#ef4444;">(Mailhook)</span>
+                                </div>
+                                <div style="color:#38bdf8; font-size:18px;">➔</div>
+                                <div style="background:#eff6ff; border:2px solid #3b82f6; border-radius:8px; padding:8px 12px; width:150px; text-align:center; color:#3b82f6; font-size:11px; font-weight:700; box-shadow:0 0 10px rgba(59,130,246,0.15); position:relative;">
+                                    <i class="fa-solid fa-brain" style="font-size:14px; margin-bottom:4px; display:block;"></i>
+                                    Analyze Inquiry<br><span style="font-size:9px; font-weight:400; color:#3b82f6;">(Gemini AI)</span>
+                                    <span style="position:absolute; bottom:-18px; left:50%; transform:translateX(-50%); font-size:8px; background:#f97316; color:#white; padding:1px 4px; border-radius:4px; color:white; font-weight:bold;">Retry Handler</span>
+                                </div>
+                                <div style="color:#38bdf8; font-size:18px;">➔</div>
+                                <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:8px; padding:8px 12px; width:150px; text-align:center; color:#22c55e; font-size:11px; font-weight:700; box-shadow:0 0 10px rgba(34,197,94,0.15);">
+                                    <i class="fa-solid fa-database" style="font-size:14px; margin-bottom:4px; display:block;"></i>
+                                    Find Customer<br><span style="font-size:9px; font-weight:400; color:#22c55e;">(Google Sheets)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Router Splitting Node -->
+                            <div style="display:flex; justify-content:center; align-items:center; margin-bottom:10px;">
+                                <div style="background:#fef9c3; border:2px solid #eab308; border-radius:50%; width:45px; height:45px; display:flex; align-items:center; justify-content:center; color:#eab308; font-weight:bold; box-shadow:0 0 10px rgba(234,179,8,0.15); z-index:5;" title="Router">
+                                    <i class="fa-solid fa-route" style="font-size:16px;"></i>
+                                </div>
+                            </div>
+
+                            <!-- 4 Branch Targets -->
+                            <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:8px;">
+                                <!-- Branch 1 -->
+                                <div style="background:rgba(16,185,129,0.08); border:1px solid #10b981; border-radius:6px; padding:6px; text-align:center; font-size:10px;">
+                                    <span style="display:block; font-weight:700; color:#10b981; margin-bottom:3px;">1st: Order Status</span>
+                                    <span style="color:#94a3b8; font-size:9px;">Find Order ➔ Reply (AI) ➔ Log Sheet ➔ Send Email</span>
+                                </div>
+                                <!-- Branch 2 -->
+                                <div style="background:rgba(59,130,246,0.08); border:1px solid #3b82f6; border-radius:6px; padding:6px; text-align:center; font-size:10px;">
+                                    <span style="display:block; font-weight:700; color:#3b82f6; margin-bottom:3px;">2nd: Product Question</span>
+                                    <span style="color:#94a3b8; font-size:9px;">Product Reply (AI) ➔ Log Sheet ➔ Send Email</span>
+                                </div>
+                                <!-- Branch 3 -->
+                                <div style="background:rgba(249,115,22,0.08); border:1px solid #f97316; border-radius:6px; padding:6px; text-align:center; font-size:10px;">
+                                    <span style="display:block; font-weight:700; color:#f97316; margin-bottom:3px;">3rd: Complaint/Refund</span>
+                                    <span style="color:#94a3b8; font-size:9px;">Create Agent Task (Sheet) ➔ Log Sheet (No Auto Email)</span>
+                                </div>
+                                <!-- Branch 4 -->
+                                <div style="background:rgba(148,163,184,0.08); border:1px solid #94a3b8; border-radius:6px; padding:6px; text-align:center; font-size:10px;">
+                                    <span style="display:block; font-weight:700; color:#94a3b8; margin-bottom:3px;">4th: Human Review</span>
+                                    <span style="color:#94a3b8; font-size:9px;">Create Human Task (Sheet) ➔ Log Sheet (No Auto Email)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</head>
+<body>
+
+<!-- SLIDE 1: TITLE SLIDE (Dark Theme) -->
+<div class="slide-container dark-theme" id="slide1">
+    <div class="content-area" style="text-align: center; align-items: center; justify-content: center; width: 100%;">
+        <h1 style="font-size: 52px; line-height: 1.2; margin-bottom: 15px; font-weight: 900; color: #ffffff;">ייעול תהליך שירות הלקוחות באמצעות AI ואוטומציה</h1>
+        <p style="font-size: 24px; color: #cbd5e1; font-weight: 300; max-width: 800px; margin-bottom: 0; line-height: 1.4;">
+            מצגת המלצה להנהלת UrbanKitchen
+        </p>
+    </div>
+</div>
+
+<!-- SLIDE 2: EXECUTIVE SUMMARY (תקציר מנהלים) -->
+<div class="slide-container" id="slide2">
+    <h2 class="slide-title">תקציר מנהלים</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <ul class="bullet-list">
+                    <li><strong>פיזור מידע מובנה:</strong> פעילות המכירות (B2C &amp; B2B) מפוזרת בין Shopify, Priority, Monday.com, Outlook, WhatsApp Business ו-Excel. חוסר החיבור יוצר עומס רב של חיפוש ידני.</li>
+                    <li><strong>פתרון מוצע:</strong> פיתוח פיילוט ממוקד של עוזר שירות לקוחות המבוסס על סנכרון תהליכי Make בשילוב מודל הבינה המלאכותית Google Gemini.</li>
+                    <li><strong>ליבת המערכת:</strong> ניתוח פניות דוא"ל נכנסות, סיווגן האוטומטי, שליפת פרטי לקוח והזמנה, וניתוב לפעולת מענה מהירה או משימה ייעודית לנציג.</li>
+                    <li><strong>בטיחות ובקרה:</strong> שמירה קפדנית על מעורבות אנושית (Human-in-the-Loop) בפניות רגישות ותלונות מורכבות, לצד אופטימיזציה מקסימלית של עלויות הריצה (Operations).</li>
+                </ul>
+            </div>
+            <div class="metric-card" style="padding: 35px 25px;">
+                <div class="number" style="color: #0ea5e9; font-size: 54px;">~40%</div>
+                <div class="label" style="font-size: 18px; font-weight: 700; color: #0f172a; margin-top: 10px;">יעד להפחתה של כ־40% בעלות הטיפול הממוצעת לפנייה</div>
+                <p style="font-size: 14px; color: #64748b; margin-top: 10px;">
+                    חיסכון משוער בעלות טיפול בפניות שירות דרך שיפור זמני המענה, חיתוך עבודה ידנית חזרתית והטמעה הדרגתית מבוקרת.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE INTRO: COMPANY BACKGROUND (היכרות קצרה) -->
+<div class="slide-container" id="slide_intro">
+    <h2 class="slide-title">היכרות קצרה עם UrbanKitchen</h2>
+    <div class="content-area">
+        <p style="font-size: 18px; font-weight: 500; margin-bottom: 25px; color: #0f172a; text-align: right; width: 100%;">
+            UrbanKitchen היא חברה ישראלית בתחום הציוד הקולינרי, הפועלת מול שני קהלי יעד מרכזיים: לקוחות עסקיים ולקוחות פרטיים.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; margin-bottom: 30px;">
+            <!-- Card 1 -->
+            <div class="tile" style="text-align: right; padding: 20px; border-top: 4px solid #0ea5e9; display: flex; flex-direction: column; align-items: flex-start;">
+                <div class="icon" style="color: #0ea5e9; font-size: 28px; margin-bottom: 10px;"><i class="fa-solid fa-briefcase"></i></div>
+                <h3 style="font-size: 18px; color: #0f172a; margin-bottom: 10px; font-weight: 700; width: 100%;">פעילות עסקית</h3>
+                <ul class="bullet-list" style="font-size: 14px; width: 100%; text-align: right;">
+                    <li style="font-size: 14px; margin-bottom: 8px; color: #475569;">מכירת ציוד קולינרי מקצועי</li>
+                    <li style="font-size: 14px; margin-bottom: 8px; color: #475569;">פעילות B2B מול מסעדות, בתי מלון ועסקים</li>
+                    <li style="font-size: 14px; margin-bottom: 8px; color: #475569;">פעילות E-commerce ללקוחות פרטיים</li>
+                </ul>
+            </div>
+            <!-- Card 2 -->
+            <div class="tile" style="text-align: right; padding: 20px; border-top: 4px solid #0ea5e9; display: flex; flex-direction: column; align-items: flex-start;">
+                <div class="icon" style="color: #0ea5e9; font-size: 28px; margin-bottom: 10px;"><i class="fa-solid fa-users"></i></div>
+                <h3 style="font-size: 18px; color: #0f172a; margin-bottom: 10px; font-weight: 700; width: 100%;">מבנה תפעולי</h3>
+                <ul class="bullet-list" style="font-size: 14px; width: 100%; text-align: right;">
+                    <li style="font-size: 14px; margin-bottom: 8px; color: #475569;">כ־62 עובדים</li>
+                    <li style="font-size: 14px; margin-bottom: 8px; color: #475569;">פעילות לוגיסטית, שירות לקוחות, מכירות ואי־קומרס</li>
+                    <li style="font-size: 14px; margin-bottom: 8px; color: #475569;">צמיחה בפעילות המקומית והבינלאומית</li>
+                </ul>
+            </div>
+            <!-- Card 3 -->
+            <div class="tile" style="text-align: right; padding: 20px; border-top: 4px solid #0ea5e9; display: flex; flex-direction: column; align-items: flex-start;">
+                <div class="icon" style="color: #0ea5e9; font-size: 28px; margin-bottom: 10px;"><i class="fa-solid fa-network-wired"></i></div>
+                <h3 style="font-size: 18px; color: #0f172a; margin-bottom: 10px; font-weight: 700; width: 100%;">סביבת מערכות</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; direction: ltr; justify-content: flex-end; width: 100%;">
+                    <span style="background-color: #f1f5f9; color: #334155; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 500; border: 1px solid #e2e8f0;">Shopify</span>
+                    <span style="background-color: #f1f5f9; color: #334155; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 500; border: 1px solid #e2e8f0;">Priority</span>
+                    <span style="background-color: #f1f5f9; color: #334155; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 500; border: 1px solid #e2e8f0;">Monday.com</span>
+                    <span style="background-color: #f1f5f9; color: #334155; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 500; border: 1px solid #e2e8f0;">Outlook</span>
+                    <span style="background-color: #f1f5f9; color: #334155; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 500; border: 1px solid #e2e8f0;">WhatsApp Business</span>
+                    <span style="background-color: #f1f5f9; color: #334155; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 500; border: 1px solid #e2e8f0;">Excel</span>
+                </div>
+            </div>
+        </div>
+        <div style="background-color: #f0f9ff; padding: 18px; border-radius: 8px; border-right: 5px solid #0ea5e9; width: 100%;">
+            <p style="font-size: 14px; color: #0369a1; text-align: right; margin: 0; line-height: 1.6; font-weight: 500;">
+                הצמיחה העסקית יצרה עומס תפעולי ומורכבות בניהול מידע, בעיקר בתהליכי שירות לקוחות, שבהם נדרש חיבור בין נתוני לקוח, הזמנות, מלאי ותקשורת מול הלקוח.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 3: CURRENT STATE & DIAGNOSIS (מצב קיים וממצאי אבחון) -->
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">מצב קיים ופיזור מערכות המידע בארגון</h2>
+    <div class="content-area">
+        <p style="margin-bottom: 15px; font-weight: 500;">זיהוי אבחוני: המידע הארגוני אינו חסר, אך הוא מבוזר בסילוסים (Silos) טכנולוגיים שונים המקשים על עבודת הצוות:</p>
+        <table class="table-layout">
+            <thead>
+                <tr>
+                    <th style="width: 25%;">מערכת מידע</th>
+                    <th style="width: 35%;">שימוש מרכזי</th>
+                    <th style="width: 40%;">צוואר הבקבוק המרכזי</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Shopify</strong></td>
+                    <td>הזמנות לקוחות ורכישות באתר</td>
+                    <td>מידע על קניות מנותק ממערכות הנה"ח וחשבוניות</td>
+                </tr>
+                <tr>
+                    <td><strong>Priority ERP</strong></td>
+                    <td>מלאי, חשבוניות ותשלומים</td>
+                    <td>אין גישה ישירה לנציגי שירות בחזית המענה ללקוחות</td>
+                </tr>
+                <tr>
+                    <td><strong>Monday.com</strong></td>
+                    <td>ניהול מכירות ולידים של מחלקת ה-B2B</td>
+                    <td>הקלדה ידנית של עסקאות לתוך Priority לצורך הפקה</td>
+                </tr>
+                <tr>
+                    <td><strong>Outlook / WhatsApp Business</strong></td>
+                    <td>ערוצי פניות לקוחות ונהגים</td>
+                    <td>פיצול מוחלט - מידע והודעות אינם מסונכרנים במקום אחד</td>
+                </tr>
+                <tr>
+                    <td><strong>Excel</strong></td>
+                    <td>מעקבים ידניים מקומיים אחר תלונות ותקלות</td>
+                    <td>קבצים מקומיים על מחשבים פרטיים - פתח לטעויות רבות</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- SLIDE 4: SELECTED BUSINESS PROBLEM (הבעיה העסקית שנבחרה) -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">בחירת הבעיה העסקית וניתוח ההשפעה הפיננסית</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p style="font-weight: 700; color: #0f172a; margin-bottom: 15px;">המיקוד העסקי: שיפור שירות הלקוחות המפוצל</p>
+                <p style="margin-bottom: 15px;">
+                    כיום, נציג שירות נדרש לעבור ידנית בין 4 מערכות מידע שונות כדי לענות על שאלה פשוטה של לקוח קצה. מצב זה מייצר פגיעה חמורה במדדי השירות.
+                </p>
+                <p style="margin-bottom: 15px; font-weight: 500; color: #0ea5e9;">
+                    נתוני הבסיס העסקיים למצב הקיים:
+                </p>
+                <ul class="bullet-list">
+                    <li><strong>כ-500 פניות</strong> שירות בחודש הזקוקות למענה</li>
+                    <li><strong>זמן תגובה ממוצע של 24 שעות</strong> לקבלת מענה ראשוני</li>
+                    <li>שחיקה משמעותית של כוח אדם ושיעור ביקורות שליליות עולה</li>
+                </ul>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="metric-card">
+                    <div class="number">45 דק'</div>
+                    <div class="label">זמן טיפול ממוצע לפנייה</div>
+                </div>
+                <div class="metric-card">
+                    <div class="number">70 ₪</div>
+                    <div class="label">עלות שעת עבודה לנציג</div>
+                </div>
+                <div class="metric-card" style="grid-column: span 2; border-right-color: #ef4444;">
+                    <div class="number" style="color: #ef4444;">52.5 ₪</div>
+                    <div class="label" style="font-weight: bold; color: #0f172a;">עלות טיפול ישירה ממוצעת לפניה בודדת</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 5: PROPOSED SOLUTION (הפתרון המוצע) -->
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">הפתרון המוצע: אסיסטנט שירות לקוחות חכם</h2>
+    <div class="content-area">
+        <p style="font-weight: 500; margin-bottom: 25px; text-align: right; width: 100%;">
+            ארכיטקטורת מענה היברידית: ה-AI מפענח ומסווג את פניית הלקוח (JSON מובנה), בעוד שמערכת Make מנהלת את הלוגיקה העסקית והניתובים על בסיס נתונים מהימנים בלבד.
+        </p>
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <h3>קלט וקריאה</h3>
+                <p>קבלת הפנייה מערוץ המייל באמצעות Mailhook ייעודי והזנתה המיידית למנוע הניתוח.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-brain"></i></div>
+                <h3>סיווג ופענוח AI</h3>
+                <p>ה-AI מפענח טקסט חופשי, מחלץ מספר הזמנה ומחזיר פלט JSON מובנה הכולל רמת ביטחון.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-route"></i></div>
+                <h3>לוגיקת ניתוב</h3>
+                <p>Make מנתב לפי סיווג ה-AI לארבעה מסלולי פעולה מוגדרים מראש באמצעות Router ו-Filters.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-user-check"></i></div>
+                <h3>שימור השליטה</h3>
+                <p>אינטגרציית "אדם בתהליך" (Human-in-the-Loop) למקרים מורכבים ותלונות פיננסיות.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 6: WORKFLOW DIAGRAM (תרשים זרימת התהליך) -->
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">תרשים זרימת התהליך (System Workflow)</h2>
+    <div class="content-area">
+        <p style="font-weight: bold; margin-bottom: 10px;">תיאור שלבי המעבר של הפנייה במערכת:</p>
+        <div class="diagram-container">
+            <div class="diagram-step">
+                <h4>1. קלט</h4>
+                <p>לקוח שולח מייל; ה-Mailhook מפעיל מיידית את התרחיש ב-Make.</p>
+            </div>
+            <div class="diagram-arrow"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="diagram-step">
+                <h4>2. ניתוח AI</h4>
+                <p>Gemini מנתח את הפנייה ומחזיר JSON עם סיווג ורמת ביטחון.</p>
+            </div>
+            <div class="diagram-arrow"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="diagram-step">
+                <h4>3. איתור נתונים</h4>
+                <p>חיפוש הלקוח לפי כתובת הדוא"ל בגיליון Google Sheets.</p>
+            </div>
+            <div class="diagram-arrow"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="diagram-step">
+                <h4>4. ניתוב (Router)</h4>
+                <p>ניתוב לאחד מ-4 מסלולים: Order Status, Product, Complaint, Human.</p>
+            </div>
+            <div class="diagram-arrow"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="diagram-step">
+                <h4>5. פלט וסיום</h4>
+                <p>שליחת מייל אוטומטי, תיעוד לוגים או יצירת משימה לנציג.</p>
+            </div>
+        </div>
+        <p style="font-size: 14px; margin-top: 30px; color: #475569; text-align: center;">
+            * מודל זה מפריד באופן מוחלט בין הניתוח הטקסטואלי לבין הניתוב הלוגי לטובת שקיפות ואמינות.
+        </p>
+    </div>
+</div>
+
+<!-- SLIDE 7: AI LOGIC & ROUTING (לוגיקת AI וניתוב) -->
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">לוגיקת ה-AI ומנגנון הניתוב של ה-Router</h2>
+    <div class="content-area">
+        <p style="margin-bottom: 15px; font-weight: bold; color: #0f172a;">המערכת מחלקת את הפניות לארבעה מסלולי פעולה ברורים על בסיס ה-JSON המופק מהבינה המלאכותית:</p>
+        <table class="table-layout">
+            <thead>
+                <tr>
+                    <th style="width: 20%;">מסלול הניתוב</th>
+                    <th style="width: 25%;">תנאי המעבר ב-Filter</th>
+                    <th style="width: 35%;">פעולה מבוצעת במערכת</th>
+                    <th style="width: 20%;">שליחת מייל אוטומטי</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>בירור סטטוס הזמנה</strong></td>
+                    <td>Inquiry Type = <span style="font-family: monospace;">ORDER_STATUS</span></td>
+                    <td>איתור פרטי ההזמנה בגיליון, הפקת ניסוח מייל ושליחתו</td>
+                    <td style="color: #10b981; font-weight: bold;"><i class="fa-solid fa-check"></i> כן (מלא)</td>
+                </tr>
+                <tr>
+                    <td><strong>שאלה כללית על מוצר</strong></td>
+                    <td>Inquiry Type = <span style="font-family: monospace;">PRODUCT_QUESTION</span></td>
+                    <td>מענה זהיר ללא המצאת מידע; בהמשך מומלץ לחבר מאגר ידע מוצרי</td>
+                    <td style="color: #10b981; font-weight: bold;"><i class="fa-solid fa-check"></i> כן (זהיר)</td>
+                </tr>
+                <tr>
+                    <td><strong>תלונות והחזרי כספים</strong></td>
+                    <td>Inquiry Type = COMPLAINT or <span style="font-family: monospace;">REFUND_REQUEST</span></td>
+                    <td>פתיחת משימת נציג בלוח העבודה עם תקציר וטיוטה מוכנה</td>
+                    <td style="color: #ef4444; font-weight: bold;"><i class="fa-solid fa-xmark"></i> לא (העברה לנציג)</td>
+                </tr>
+                <tr>
+                    <td><strong>בדיקה ידנית (Human Review)</strong></td>
+                    <td>Confidence נמוך או פנייה שאינה ברורה</td>
+                    <td>ניתוב לפאנל הניהול של השירות עם משימה ייעודית לבדיקה</td>
+                    <td style="color: #ef4444; font-weight: bold;"><i class="fa-solid fa-xmark"></i> לא (העברה לנציג)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- SLIDE 8: IMPLEMENTATION IN MAKE (מימוש ב-Make מעודכן) -->
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">תרחיש Make בפועל – מימוש האוטומציה במערכת</h2>
+    <div class="content-area">
+        <div class="two-column" style="grid-template-columns: 1.4fr 1fr; gap: 30px;">
+            <div>
+                <div class="image-wrapper" style="height: 380px;">
+                    <div style="padding: 20px; background: #0f172a; height: 100%; display: flex; flex-direction: column; justify-content: space-between; border-radius: 8px; color: #fff; direction: ltr; font-family: &#39;Heebo&#39;, sans-serif;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #1e293b; padding-bottom:8px; margin-bottom:10px;">
+                            <span style="font-weight:700; color:#38bdf8; font-size:14px;">Make Scenario: UrbanKitchen - AI Customer Service Assistant</span>
+                            <span style="font-size:11px; background:#1e293b; padding:2px 8px; border-radius:12px; color:#94a3b8; direction:rtl;"><i class="fa-solid fa-network-wired"></i> תרשים זרימה דיגיטלי חלופי</span>
+                        </div>
+                        
+                        <div style="display:flex; flex-direction:column; gap:12px; flex-grow:1; justify-content:center;">
+                            <!-- Stage 1 to 3 Main Pipeline -->
+                            <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:10px;">
+                                <div style="background:#fef2f2; border:2px solid #ef4444; border-radius:8px; padding:8px 12px; width:150px; text-align:center; color:#ef4444; font-size:11px; font-weight:700; box-shadow:0 0 10px rgba(239,68,68,0.15);">
+                                    <i class="fa-solid fa-envelope-open" style="font-size:14px; margin-bottom:4px; display:block;"></i>
+                                    Receive Email<br><span style="font-size:9px; font-weight:400; color:#ef4444;">(Mailhook)</span>
+                                </div>
+                                <div style="color:#38bdf8; font-size:18px;">➔</div>
+                                <div style="background:#eff6ff; border:2px solid #3b82f6; border-radius:8px; padding:8px 12px; width:150px; text-align:center; color:#3b82f6; font-size:11px; font-weight:700; box-shadow:0 0 10px rgba(59,130,246,0.15); position:relative;">
+                                    <i class="fa-solid fa-brain" style="font-size:14px; margin-bottom:4px; display:block;"></i>
+                                    Analyze Inquiry<br><span style="font-size:9px; font-weight:400; color:#3b82f6;">(Gemini AI)</span>
+                                    <span style="position:absolute; bottom:-18px; left:50%; transform:translateX(-50%); font-size:8px; background:#f97316; color:#white; padding:1px 4px; border-radius:4px; color:white; font-weight:bold;">Retry Handler</span>
+                                </div>
+                                <div style="color:#38bdf8; font-size:18px;">➔</div>
+                                <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:8px; padding:8px 12px; width:150px; text-align:center; color:#22c55e; font-size:11px; font-weight:700; box-shadow:0 0 10px rgba(34,197,94,0.15);">
+                                    <i class="fa-solid fa-database" style="font-size:14px; margin-bottom:4px; display:block;"></i>
+                                    Find Customer<br><span style="font-size:9px; font-weight:400; color:#22c55e;">(Google Sheets)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Router Splitting Node -->
+                            <div style="display:flex; justify-content:center; align-items:center; margin-bottom:10px;">
+                                <div style="background:#fef9c3; border:2px solid #eab308; border-radius:50%; width:45px; height:45px; display:flex; align-items:center; justify-content:center; color:#eab308; font-weight:bold; box-shadow:0 0 10px rgba(234,179,8,0.15); z-index:5;" title="Router">
+                                    <i class="fa-solid fa-route" style="font-size:16px;"></i>
+                                </div>
+                            </div>
+
+                            <!-- 4 Branch Targets -->
+                            <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:8px;">
+                                <!-- Branch 1 -->
+                                <div style="background:rgba(16,185,129,0.08); border:1px solid #10b981; border-radius:6px; padding:6px; text-align:center; font-size:10px;">
+                                    <span style="display:block; font-weight:700; color:#10b981; margin-bottom:3px;">1st: Order Status</span>
+                                    <span style="color:#94a3b8; font-size:9px;">Find Order ➔ Reply (AI) ➔ Log Sheet ➔ Send Email</span>
+                                </div>
+                                <!-- Branch 2 -->
+                                <div style="background:rgba(59,130,246,0.08); border:1px solid #3b82f6; border-radius:6px; padding:6px; text-align:center; font-size:10px;">
+                                    <span style="display:block; font-weight:700; color:#3b82f6; margin-bottom:3px;">2nd: Product Question</span>
+                                    <span style="color:#94a3b8; font-size:9px;">Product Reply (AI) ➔ Log Sheet ➔ Send Email</span>
+                                </div>
+                                <!-- Branch 3 -->
+                                <div style="background:rgba(249,115,22,0.08); border:1px solid #f97316; border-radius:6px; padding:6px; text-align:center; font-size:10px;">
+                                    <span style="display:block; font-weight:700; color:#f97316; margin-bottom:3px;">3rd: Complaint/Refund</span>
+                                    <span style="color:#94a3b8; font-size:9px;">Create Agent Task (Sheet) ➔ Log Sheet (No Auto Email)</span>
+                                </div>
+                                <!-- Branch 4 -->
+                                <div style="background:rgba(148,163,184,0.08); border:1px solid #94a3b8; border-radius:6px; padding:6px; text-align:center; font-size:10px;">
+                                    <span style="display:block; font-weight:700; color:#94a3b8; margin-bottom:3px;">4th: Human Review</span>
+                                    <span style="color:#94a3b8; font-size:9px;">Create Human Task (Sheet) ➔ Log Sheet (No Auto Email)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size: 13px; color: #475569; text-align: center; margin-top: 8px; font-weight: 500;">
+                    תרחיש Make בפועל – ארבעה מסלולי טיפול
+                </p>
+            </div>
+            <div style="font-size: 15px;">
+                <p style="font-weight: 700; color: #0f172a; margin-bottom: 12px;">מערך האוטומציה שמומש בפועל:</p>
+                <ul class="bullet-list" style="font-size: 14px; margin-bottom: 15px;">
+                    <li>התרחיש מתחיל בקבלת פניית לקוח באמצעות Mailhook.</li>
+                    <li>מודול Gemini מנתח את הפנייה ומחזיר פלט מובנה.</li>
+                    <li>ה־Router מנתב את הפנייה למסלול המתאים לפי סוג הפנייה.</li>
+                    <li>בסיום, המערכת שולחת מענה אוטומטי או יוצרת משימה לנציג שירות.</li>
+                </ul>
+
+                <p style="font-weight: 700; color: #0f172a; margin-bottom: 8px;">תפקיד מודולי ה־AI במערכת:</p>
+                <ul class="bullet-list" style="font-size: 14px;">
+                    <li><strong>הראשון (Analyze Customer Inquiry):</strong> מנתח, מסווג, מחלץ מידע ומחזיר פלט JSON מובנה לצורך החלטות ניתוב. ה-`draft_response` שהוא מייצר משמש בעיקר כתמיכה ועזר לנציג במקרים המועברים לטיפול אנושי.</li>
+                    <li><strong>השני (Generate Reply):</strong> מופעל אך ורק במסלולים שבהם נדרש מענה אוטומטי (כמו סטטוס הזמנה), ומייצר את נוסח התשובה הסופי ללקוח על בסיס נתונים שנשלוף מהמערכת.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 9: HUMAN-IN-THE-LOOP & EXCEPTION HANDLING (ניהול חריגות ואינטגרציה אנושית) -->
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">מנגנון Human-in-the-Loop וניהול חריגות</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p style="font-weight: 700; color: #0f172a; margin-bottom: 15px;">אוטומציה בטוחה: מתי המערכת מסרבת להשיב לבד?</p>
+                <p style="margin-bottom: 15px;">
+                    על מנת לשמור על חווית הלקוח ולמנוע טעויות מביכות או הבטחות פיננסיות שגויות, <strong>לא נשלחת תשובה אוטומטית</strong> במקרים הבאים:
+                </p>
+                <ul class="bullet-list" style="font-size: 15px;">
+                    <li><strong>תלונות לקוחות ובקשות להחזרי כספים:</strong> ה-AI מכין טיוטה, אך המענה נשלח רק לאחר אישור עריכה ידני של נציג.</li>
+                    <li><strong>רמת ביטחון נמוכה:</strong> פניות שבהן מזהים רמת ביטחון נמוכה מ־80% (<span style="font-family: monospace; font-size: 14px;">confidence_score &lt; 0.8</span>).</li>
+                    <li><strong>פניות חסרות או לא ברורות:</strong> לקוח שאינו מזוהה במערכת או הזמנה שלא נמצאה בטבלאות.</li>
+                </ul>
+            </div>
+            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 25px;">
+                <h4 style="font-size: 18px; color: #0f172a; margin-bottom: 15px; border-bottom: 2px solid #0ea5e9; padding-bottom: 8px;">תצוגת המשימה לנציג (Agent Tasks)</h4>
+                <p style="font-size: 14px; margin-bottom: 10px;"><strong>זיהוי לקוח:</strong> הלקוח מזוהה במערכת על בסיס כתובת הדוא"ל שממנה נשלחה הפנייה</p>
+                <p style="font-size: 14px; margin-bottom: 10px;"><strong>סיווג פניה:</strong> <span style="background-color: #fee2e2; color: #ef4444; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-size: 12px;">תלונה / החזר כספי</span></p>
+                <p style="font-size: 14px; margin-bottom: 10px;"><strong>תקציר AI:</strong> הלקוח קיבל סכין שף שבורה במשלוח ומבקש זיכוי דחוף.</p>
+                <p style="font-size: 14px; background-color: #f1f5f9; padding: 10px; border-radius: 4px; font-style: italic; font-size: 13px;">
+                    "שלום, תודה שפנית אלינו. הצטערנו לשמוע על הנזק שנגרם למוצר. נציג שירות בוחן כעת את פרטי ההזמנה וייצור קשר..."
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 10: ERRORS & RELIABILITY (טיפול בשגיאות ואמינות המערכת) -->
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">טיפול בשגיאות טכניות ואופטימיזציית Operations</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3 style="font-size: 22px; color: #0ea5e9; margin-bottom: 15px;">אמינות ויציבות טכנולוגית</h3>
+                <p style="margin-bottom: 15px;">תרחיש ה-Make כולל מנגנוני הגנה מובנים למניעת אובדן פניות של לקוחות עקב תקלות טכניות:</p>
+                <ul class="bullet-list" style="font-size: 15px;">
+                    <li><strong>Error Handler מסוג Retry:</strong> הוגדר על מודול Analyze Customer Inquiry, משום שזה מודול קריטי לניתוח וסיווג הפנייה, ומאפשר להתגבר על בעיות תקשורת זמניות מול השרתים.</li>
+                    <li><strong>Error Handler מסוג Resume:</strong> הוגדר על מודול Log Inquiry, משום שכשל נקודתי בתיעוד וברישום אינו אמור לעצור את המשך הטיפול ומתן המענה ללקוח.</li>
+                    <li><strong>Store incomplete executions:</strong> מוגדר בהגדרות התרחיש ב-Make, ומאפשר לשמור ריצות שלא הושלמו לצורך בדיקה והרצה מחדש במקרה של תקלה.</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="font-size: 22px; color: #0f172a; margin-bottom: 15px;">אופטימיזציית עלויות ריצה (Operations)</h3>
+                <p style="margin-bottom: 15px;">חיסכון במשאבים ועלויות API בתהליך האוטומציה:</p>
+                <ul class="bullet-list" style="font-size: 15px;">
+                    <li><strong>ניתוב מוקדם (Early Routing):</strong> שימוש ב-Router המונע קריאות מיותרות וחיפוש בטבלאות שאינן רלוונטיות למסלול שנבחר.</li>
+                    <li><strong>חיפוש ממוקד (Conditional Search):</strong> סריקת ההזמנה מתבצעת אך ורק במסלול של בירור סטטוס הזמנה.</li>
+                    <li><strong>מניעת מודולים כפולים:</strong> הפקת פלט JSON ישיר מה-AI מייתרת שימוש במודלי עיבוד טקסט או Regex נוספים.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 11: TESTS PERFORMED (בדיקות קצה ותיקוף המערכת) -->
+<div class="slide-container" id="slide11">
+    <h2 class="slide-title">תוצאות בדיקות הקצה ותיקוף התהליך (Stress Test)</h2>
+    <div class="content-area">
+        <p style="margin-bottom: 15px; font-weight: 500;">במסגרת ה-POC בוצעו בדיקות הדמיה מקיפות כדי לוודא שאינטגרציית ה-AI והמסלולים פועלים ללא תקלות:</p>
+        <table class="table-layout">
+            <thead>
+                <tr>
+                    <th style="width: 25%;">תרחיש הבדיקה</th>
+                    <th style="width: 35%;">הקלט שהוזן למערכת (Prompt)</th>
+                    <th style="width: 25%;">נתיב הניתוב בפועל</th>
+                    <th style="width: 15%;">סטטוס בדיקה</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>בירור סטטוס הזמנה</strong></td>
+                    <td>"היי, רציתי לדעת איפה משלוח O1006 שלי? עבר שבוע"</td>
+                    <td>Order Status Route</td>
+                    <td style="color: #10b981; font-weight: bold;"><i class="fa-solid fa-circle-check"></i> עבר בהצלחה</td>
+                </tr>
+                <tr>
+                    <td><strong>שאלה על מוצר</strong></td>
+                    <td>"האם סט הסכינים שלכם מתאים לשטיפה במדיח כלים?"</td>
+                    <td>Product Question Route</td>
+                    <td style="color: #10b981; font-weight: bold;"><i class="fa-solid fa-circle-check"></i> עבר בהצלחה</td>
+                </tr>
+                <tr>
+                    <td><strong>תלונה על מוצר פגום</strong></td>
+                    <td>"קיבלתי את המשלוח היום והמחבת הגיעה שרוטה לגמרי"</td>
+                    <td>Complaint Route</td>
+                    <td style="color: #10b981; font-weight: bold;"><i class="fa-solid fa-circle-check"></i> עבר בהצלחה</td>
+                </tr>
+                <tr>
+                    <td><strong>פנייה לא ברורה</strong></td>
+                    <td>"שלום, צרו איתי קשר בהקדם לגבי משהו"</td>
+                    <td>Human Review Route</td>
+                    <td style="color: #10b981; font-weight: bold;"><i class="fa-solid fa-circle-check"></i> עבר בהצלחה</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- SLIDE 12: KPIS & SUCCESS MEASUREMENT (מדדי הצלחה ויעדי KPI לפיילוט) -->
+<div class="slide-container" id="slide12">
+    <h2 class="slide-title">מדדי הצלחה ויעדי KPI לפיילוט</h2>
+    <div class="content-area">
+        <div class="bar-chart-visual">
+            
+            <!-- KPI 1: זמן תגובה ממוצע -->
+            <div class="bar-comparison-row">
+                <div class="bar-label">זמן תגובה ממוצע (שעות)</div>
+                <div class="bar-wrapper">
+                    <div class="bar-data-line">
+                        <span class="state-tag">מצב קיים:</span>
+                        <div class="bar-visual-container">
+                            <div class="bar-fill current" style="width: 100%;">24 שעות</div>
+                        </div>
+                    </div>
+                    <div class="bar-data-line">
+                        <span class="state-tag">יעד פיילוט:</span>
+                        <div class="bar-visual-container">
+                            <div class="bar-fill target" style="width: 16.6%;">פחות מ-4 שעות</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI 2: עלות טיפול ממוצעת לפניה -->
+            <div class="bar-comparison-row">
+                <div class="bar-label">עלות טיפול ממוצעת לפנייה</div>
+                <div class="bar-wrapper">
+                    <div class="bar-data-line">
+                        <span class="state-tag">מצב קיים:</span>
+                        <div class="bar-visual-container">
+                            <div class="bar-fill current" style="width: 100%;">52.5 ₪</div>
+                        </div>
+                    </div>
+                    <div class="bar-data-line">
+                        <span class="state-tag">יעד פיילוט:</span>
+                        <div class="bar-visual-container">
+                            <div class="bar-fill target" style="width: 60%;">31.5 ₪ (~40% חיסכון)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI 3: שיעור טיפול אוטומטי -->
+            <div class="bar-comparison-row">
+                <div class="bar-label">שיעור טיפול אוטומטי (פיילוט)</div>
+                <div class="bar-wrapper">
+                    <div class="bar-data-line">
+                        <span class="state-tag">פניות פשוטות:</span>
+                        <div class="bar-visual-container">
+                            <div class="bar-fill target" style="width: 30%;">30% יעד מענה אוטומטי</div>
+                        </div>
+                    </div>
+                    <div class="bar-data-line">
+                        <span class="state-tag">פניות מורכבות:</span>
+                        <div class="bar-visual-container">
+                            <div class="bar-fill current" style="width: 70%; background-color: #3b82f6;">70% מעורבות נציג (HITL)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <p style="font-size: 14px; color: #64748b; margin-top: 15px; text-align: center; font-style: italic;">
+            המדדים ינוטרו בזמן אמת באמצעות חיבור ה-Inquiry Log ל-Dashboard ב-Google Looker Studio.
+        </p>
+    </div>
+</div>
+
+<!-- SLIDE 13: IMPLEMENTATION PLAN & TIMELINE (תוכנית הטמעה ושינוי) -->
+<div class="slide-container" id="slide13">
+    <h2 class="slide-title">תוכנית ההטמעה וניהול השינוי (פיילוט ממוקד)</h2>
+    <div class="content-area">
+        <p style="font-weight: 500; margin-bottom: 10px;">פיילוט של 4 שבועות בערוץ הדוא"ל בלבד כדי לצמצם סיכונים ולבצע התאמות מדויקות של הפרומפטים:</p>
+        <div class="timeline-layout">
+            <div class="timeline-line"></div>
+            <div class="timeline-item">
+                <h3>שבוע 1</h3>
+                <p>הדרכת נציגים, בדיקת תרחישים והפעלה מבוקרת על מדגם מצומצם של פניות באמצעות כתובת פיילוט ייעודית או העברה ידנית.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>שבוע 2</h3>
+                <p>הרחבת השימוש לפניות דוא"ל נכנסות נוספות ומעקב תקלות יומי.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>שבוע 3</h3>
+                <p>מדידת KPI ראשונית, איסוף משוב מהנציגים ושיפור פרומפטים.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>שבוע 4</h3>
+                <p>ניתוח תוצאות הפיילוט, בדיקת ROI וקבלת החלטה על המשך הרחבה.</p>
+            </div>
+        </div>
+        <div style="margin-top: 35px; background-color: #f0f9ff; padding: 15px; border-radius: 8px; border: 1px solid #bae6fd;">
+            <p style="font-size: 14px; color: #0369a1; text-align: right; margin: 0;">
+                <strong>המסר המרכזי לעובדים:</strong> ה-AI אינו מחליף את הנציגים האנושיים! תפקידו להפחית את השחיקה, לחסוך את החיפושים הידניים המתישים ולאפשר להם להתמקד בלקוחות ובהחלטות מורכבות.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 14: FUTURE EXPANSION ROADMAP (הרחבה עתידית - מפת דרכים) -->
+<div class="slide-container" id="slide14">
+    <h2 class="slide-title">מפת דרכים להרחבה עתידית (Roadmap)</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <ul class="bullet-list">
+                    <li><strong style="color: #0ea5e9;">שלב 1: ייצוב והרחבה קרובה (טווח קצר)</strong>
+                        <p style="font-size: 14px; margin-right: 15px; margin-top: 5px;">
+                            חיבור Outlook כערוץ קבוע, טיוב טבלאות לקוחות והקמת מאגר ידע שירותי מוצרי רשמי של שאלות נפוצות על מוצרים.
+                        </p>
+                    </li>
+                    <li><strong style="color: #0ea5e9;">שלב 2: אינטגרציה למערכות ליבה (טווח בינוני)</strong>
+                        <p style="font-size: 14px; margin-right: 15px; margin-top: 5px;">
+                            חיבור ישיר באמצעות APIs ל-Shopify לשליפת הזמנות, ל-Priority ERP לבדיקת מלאי ותשלומים, ול-Monday לניהול משימות המכירה.
+                        </p>
+                    </li>
+                    <li><strong style="color: #0ea5e9;">שלב 3: יכולות מתקדמות (טווח ארוך)</strong>
+                        <p style="font-size: 14px; margin-right: 15px; margin-top: 5px;">
+                            יצירת שכבת Customer 360 מרכזית, חיבור WhatsApp Business לאוטומציה וניתוח מגמות שירות אסטרטגיות להנהלה.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div style="background-color: #0f172a; color: #ffffff; border-radius: 12px; padding: 30px; text-align: center;">
+                <h3 style="color: #ffffff; font-size: 24px; margin-bottom: 15px;">גישה הדרגתית ומבוקרת</h3>
+                <p style="color: #94a3b8; font-size: 15px; line-height: 1.6;">
+                    אין לחבר את כל מערכות הארגון בבת אחת. 
+                    <br><br>
+                    התקדמות בשלבים מותנית בעמידה במדדי ההצלחה ובתיקוף היציבות של כל שלב, תוך שמירה על יציבות פיננסית ותפעולית של UrbanKitchen.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 15: SUMMARY & RECOMMENDATIONS (סיכום והמלצות - שקופית סופית מעודכנת) -->
+<div class="slide-container" id="slide15">
+    <h2 class="slide-title">סיכום והמלצות אסטרטגיות להנהלה</h2>
+    <div class="content-area">
+        <div style="background-color: #f8fafc; border-right: 6px solid #0ea5e9; padding: 30px; border-radius: 8px; width: 100%; margin: 0 auto 30px auto; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+            <p style="font-size: 22px; font-weight: 700; color: #0f172a; line-height: 1.5; margin-bottom: 5px; font-family: &#39;Rubik&#39;, sans-serif; text-align: right;">
+                המלצה: להתחיל בפיילוט מבוקר במחלקת שירות הלקוחות, למדוד את הערך העסקי בפועל, ולאחר הוכחת הצלחה להרחיב את הפתרון בהדרגה לערוצים ולמערכות נוספים.
+            </p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; width: 100%;">
+            <div style="background-color: #f1f5f9; padding: 25px; border-radius: 8px; border-top: 5px solid #10b981; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);">
+                <div style="font-size: 28px; color: #10b981; margin-bottom: 10px;"><i class="fa-solid fa-gauge-high"></i></div>
+                <h4 style="font-size: 18px; margin-bottom: 8px; color: #0f172a; font-weight: 700;">שיפור מהירות המענה</h4>
+                <p style="font-size: 14px; color: #475569; margin: 0; line-height: 1.5;">צמצום זמני המענה הראשוני ללקוחות מ-24 שעות ליעד מוגדר של פחות מ-4 שעות במסגרת הפיילוט.</p>
+            </div>
+            
+            <div style="background-color: #f1f5f9; padding: 25px; border-radius: 8px; border-top: 5px solid #0ea5e9; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);">
+                <div style="font-size: 28px; color: #0ea5e9; margin-bottom: 10px;"><i class="fa-solid fa-arrows-spin"></i></div>
+                <h4 style="font-size: 18px; margin-bottom: 8px; color: #0f172a; font-weight: 700;">הפחתת עבודה ידנית</h4>
+                <p style="font-size: 14px; color: #475569; margin: 0; line-height: 1.5;">ייעול חיפושי המידע המבוזרים וחיסכון משמעותי בזמן ובמאמץ של נציגי השירות על פניות שגרתיות.</p>
+            </div>
+
+            <div style="background-color: #f1f5f9; padding: 25px; border-radius: 8px; border-top: 5px solid #3b82f6; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);">
+                <div style="font-size: 28px; color: #3b82f6; margin-bottom: 10px;"><i class="fa-solid fa-shield-halved"></i></div>
+                <h4 style="font-size: 18px; margin-bottom: 8px; color: #0f172a; font-weight: 700;">שילוב AI אחראי ומבוקר</h4>
+                <p style="font-size: 14px; color: #475569; margin: 0; line-height: 1.5;">מנגנון "אדם בתהליך" למניעת סיכונים. אוטומציה לפניות פשוטות והעברה מבוקרת של חריגות ותלונות לנציג.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body></html>
